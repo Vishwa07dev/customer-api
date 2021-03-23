@@ -7,15 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController(value = "/customer")
+@RestController
+@RequestMapping(value = "/customerApi")
 public class CustomerController {
 
     private static Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
@@ -26,18 +23,20 @@ public class CustomerController {
     @GetMapping("/live")
     public Object checkStatus() {
         LOGGER.info("Inside checkStatus");
-        return new ResponseEntity<>(HttpStatus.OK).getBody();
+        return ResponseEntity.ok().body("Customer service is up and running fine.");
     }
 
     @PostMapping("/v1/customer")
-    public ResponseEntity<CustomerDTO> saveCustomer(@RequestBody @Valid CustomerDTO customerDTO) {
+    public ResponseEntity<CustomerDTO> saveCustomer(
+            @RequestBody @Valid CustomerDTO customerDTO) {
         CustomerDTO response = customerService.saveCustomerData(customerDTO);
-        return null;
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/v1/customer/{customerId}")
-    public ResponseEntity<CustomerDTO> getCustomer(@PathVariable int customerId) {
+    public ResponseEntity<CustomerDTO> getCustomer(
+            @PathVariable int customerId) {
         CustomerDTO customerDTO = customerService.getCustomerData(customerId);
-        return null;
+        return ResponseEntity.ok(customerDTO);
     }
 }

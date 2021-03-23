@@ -13,10 +13,10 @@ public class CustomerDTO {
     @NotBlank(message = "Last Name cannot be blank")
     private String lastName;
     @NotBlank
-    @Size(min = 10, max = 10)
+    @Size(min = 10, max = 10, message = "Please give a valid mobile no")
     private String primaryMobileNo;
     @NotBlank
-    @Size(min = 10, max = 10)
+    @Size(min = 10, max = 10, message = "Please give a valid alternate mobile no")
     private String alternateMobileNo;
     @NotBlank
     @CustomEmailValidator
