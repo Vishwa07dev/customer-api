@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDTO getCustomerData(int customerId) {
         CustomerEntity customerEntity =
                 customerRepo.findById(customerId)
-                        .orElseThrow(() -> new RecordNotFoundException("Customer details for customer[" + customerId + "] does not exists"));
+                        .orElseThrow(() -> new RecordNotFoundException("Customer details for customer[" + customerId + "] does not exist"));
         CustomerDTO customerDTO = CustomerMapper.convertEntityToDTO(customerEntity);
         return customerDTO;
     }
