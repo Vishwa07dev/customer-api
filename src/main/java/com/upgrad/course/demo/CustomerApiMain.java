@@ -12,13 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.upgrad.course.demo"})
-public class CustomerApiMain extends SpringBootServletInitializer {
+public class CustomerApiMain {
     public static void main( String[] args ) {
         SpringApplication.run(CustomerApiMain.class, args);
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(CustomerApiMain.class);
     }
 }

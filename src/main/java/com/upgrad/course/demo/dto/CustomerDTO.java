@@ -2,8 +2,7 @@ package com.upgrad.course.demo.dto;
 
 import com.upgrad.course.demo.customValidator.CustomEmailValidator;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class CustomerDTO {
 
@@ -13,10 +12,10 @@ public class CustomerDTO {
     @NotBlank(message = "Last Name cannot be blank")
     private String lastName;
     @NotBlank
-    @Size(min = 10, max = 10, message = "Please give a valid mobile no")
+    @Pattern(regexp="(^[0-9]{10})", message = "Please enter a valid mobile no")
     private String primaryMobileNo;
     @NotBlank
-    @Size(min = 10, max = 10, message = "Please give a valid alternate mobile no")
+    @Pattern(regexp="(^[0-9]{10})", message = "Please enter a valid alternate mobile no")
     private String alternateMobileNo;
     @NotBlank
     @CustomEmailValidator
