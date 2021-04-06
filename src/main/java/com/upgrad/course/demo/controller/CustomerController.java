@@ -26,14 +26,14 @@ public class CustomerController {
         return ResponseEntity.ok().body("Customer service is up and running fine.");
     }
 
-    @PostMapping("/v1/customer")
+    @PostMapping("/v1/customers")
     public ResponseEntity<CustomerDTO> saveCustomer(
             @Valid @RequestBody CustomerDTO customerDTO) {
         CustomerDTO response = customerService.saveCustomerData(customerDTO);
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/v1/customer/{customerId}")
+    @GetMapping("/v1/customers/{customerId}")
     public ResponseEntity<CustomerDTO> getCustomer(
             @PathVariable int customerId) {
         CustomerDTO customerDTO = customerService.getCustomerData(customerId);

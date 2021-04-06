@@ -11,8 +11,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 @Entity
-@Table(name = "customer", schema = "fooddelivery", catalog = "")
+@Table(name = "customers", schema = "fooddelivery", catalog = "")
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

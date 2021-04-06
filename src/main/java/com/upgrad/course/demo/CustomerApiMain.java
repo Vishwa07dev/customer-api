@@ -11,7 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
  *
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.upgrad.course.demo"})
 public class CustomerApiMain {
     public static void main( String[] args ) {
         SpringApplication.run(CustomerApiMain.class, args);
