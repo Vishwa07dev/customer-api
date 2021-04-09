@@ -1,6 +1,7 @@
 package com.upgrad.course.demo.controller;
 
 import com.upgrad.course.demo.dto.CustomerDTO;
+import com.upgrad.course.demo.exceptions.RecordNotFoundException;
 import com.upgrad.course.demo.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,14 +16,12 @@ import javax.validation.Valid;
 @RequestMapping(value = "/customerApi")
 public class CustomerController {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerService customerService;
 
     @GetMapping("/live")
     public Object checkStatus() {
-        LOGGER.info("Inside checkStatus");
         return ResponseEntity.ok().body("Customer service is up and running fine.");
     }
 
@@ -35,7 +34,7 @@ public class CustomerController {
 
     @GetMapping("/v1/customers/{customerId}")
     public ResponseEntity<CustomerDTO> getCustomer(
-            @PathVariable int customerId) {
+            @PathVariable int customerId) throws RecordNotFoundException {
         CustomerDTO customerDTO = customerService.getCustomerData(customerId);
         return ResponseEntity.ok(customerDTO);
     }

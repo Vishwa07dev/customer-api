@@ -2,6 +2,7 @@ package com.upgrad.course.demo.service;
 
 import com.upgrad.course.demo.dto.CustomerDTO;
 
+import com.upgrad.course.demo.exceptions.RecordNotFoundException;
 import java.util.Optional;
 
 public interface CustomerService {
@@ -18,5 +19,5 @@ public interface CustomerService {
      * @param customerId
      * @return
      */
-    public CustomerDTO getCustomerData(int customerId);
+    public CustomerDTO getCustomerData(int customerId) throws RecordNotFoundException;
 }

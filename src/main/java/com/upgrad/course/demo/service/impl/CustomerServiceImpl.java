@@ -2,7 +2,7 @@ package com.upgrad.course.demo.service.impl;
 
 import com.upgrad.course.demo.dto.CustomerDTO;
 import com.upgrad.course.demo.entity.CustomerEntity;
-import com.upgrad.course.demo.exception.RecordNotFoundException;
+import com.upgrad.course.demo.exceptions.RecordNotFoundException;
 import com.upgrad.course.demo.mapper.CustomerMapper;
 import com.upgrad.course.demo.repository.CustomerRepo;
 import com.upgrad.course.demo.service.CustomerService;
@@ -24,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO getCustomerData(int customerId) {
+    public CustomerDTO getCustomerData(int customerId) throws RecordNotFoundException {
         CustomerEntity customerEntity =
                 customerRepo.findById(customerId)
                         .orElseThrow(() -> new RecordNotFoundException("Customer details for customer[" + customerId + "] does not exist"));

@@ -4,27 +4,29 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class LoggingAspect {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("execution(* com.upgrad.course.demo..*(..))")
-    public Object applyLogging(ProceedingJoinPoint joinPoint) throws Throwable {
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+  @Around("execution(* com.upgrad.course.demo..*(..))")
+  public Object applyLogging(ProceedingJoinPoint joinPoint) throws Throwable{
 
-        String className = signature.getDeclaringType().getSimpleName();
-        String methodName = signature.getName();
+    MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 
-        LOGGER.info("In "+className+", entering "+methodName);
-        Object result = joinPoint.proceed();
-        LOGGER.info("In "+className+", exiting "+methodName);
+    String className = signature.getDeclaringType().getSimpleName();
+    String methodName = signature.getName();
 
-       return result;
-    }
+    System.out.println("In " + className + " , entering " + methodName);
+
+    Object result = joinPoint.proceed();
+
+    System.out.println("In " + className + " , existing " + methodName);
+
+    return result ;
+
+  }
+
 }

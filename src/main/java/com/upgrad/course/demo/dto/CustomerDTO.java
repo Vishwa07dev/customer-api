@@ -1,27 +1,32 @@
 package com.upgrad.course.demo.dto;
 
-import com.upgrad.course.demo.customValidator.CustomEmailValidator;
+import com.upgrad.course.demo.customervalidators.CustomEmailValidator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-import javax.validation.constraints.*;
 
 public class CustomerDTO {
 
     private int customerId;
-    @NotBlank(message = "First Name cannot be blank")
+    @NotBlank(message =" FirstName can't be blank")
     private String firstName;
-    @NotBlank(message = "Last Name cannot be blank")
+    @NotBlank(message = "Last Name can't be blank")
     private String lastName;
     @NotBlank
-    @Pattern(regexp="(^[0-9]{10})", message = "Please enter a valid mobile no")
+    @Pattern(regexp = "(^[0-9]{10})", message="Please enter a valid mobile no")
     private String primaryMobileNo;
+
     @NotBlank
-    @Pattern(regexp="(^[0-9]{10})", message = "Please enter a valid alternate mobile no")
+    @Pattern(regexp = "(^[0-9]{10})", message="Please enter a valid alternate mobile no")
     private String alternateMobileNo;
+
     @NotBlank
     @CustomEmailValidator
     private String emailId;
+
     @NotBlank
     private String mainAddress;
+
     @NotBlank
     private String alternateAddress;
 
